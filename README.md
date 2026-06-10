@@ -92,6 +92,22 @@ Adjust */path/to/tapo-t310-logger* to your local project path.
 
 A `cron.log` file will be created in the project directory.
 
+### Optional: Cloud-Free Operation
+
+The H100 hubs do not require Internet access for this logger. After the initial setup and any desired firmware updates, Internet access can be blocked (e.g. at the router level).
+
+The logger communicates directly with the H100 hubs over the local network and does not require the Tapo cloud.
+
+When Internet access is blocked:
+
+- CSV logging continues to work
+- Local communication between H100 hubs and T310 sensors continues to work
+- Cloud features stop working
+- Remote access through the Tapo smartphone app is no longer available
+- Firmware updates are no longer possible until Internet access is restored
+
+**This allows the H100 hubs and T310 sensors to operate completely without the Tapo cloud after initial configuration.**
+
 ### License
 
 GPL-3.0-or-later
