@@ -12,23 +12,29 @@ Example output:
 
 Local CSV logging only. No cloud dashboard. No database. No MQTT. No Home Assistant.
 
-#### Requirements
+## Requirements
 
-- Python 3 with python3-pip and python3-venv
-- One or more TP-Link Tapo H100 hubs and T310 sensors
+- Python 3 with `pip` and `venv`
+- One or more TP-Link Tapo H100 hubs
+- One or more TP-Link Tapo T310 sensors
 - Tapo account credentials
-- Local network acceess to H100
+- Local network access to the H100 hub
 
-#### Compatibility
+On Debian, Ubuntu, Linux Mint and similar distributions, you may need to install `python3-venv` and `python3-pip` first.
+
+## Compatibility
 
 Currently tested with the TP-Link Tapo H100 hub only:
+
 - Hardware: 1.0 (EU)
 - Firmware: 1.6.1 Build 250324 Rel.173226
 
-Other Tapo hubs may work, but I cannot verify this because I do not own one. Feedback and reports are welcome.
+Other Tapo hubs may work, but I cannot verify this. I do not own one. Feedback are welcome.
 
 ## Setup
-**1. Clone the repository:**
+
+### 1. Clone the repository and copy config exampels
+
 ```bash
 git clone https://github.com/kraftfabrik/tapo-t310-logger.git
 cd tapo-t310-logger
@@ -36,48 +42,53 @@ cp config/credentials.example config/credentials
 cp config/hubs.example config/hubs
 ```
 
-**2. Edit the *plaintext* config files in `config/`.**
+### 2. Edit the plaintext config files in `config/`
 
-**2.1. `config/credentials:`**
-```plaintext
+#### `config/credentials`
+
+```text
 your-tapo-email@example.com
 your-tapo-password
 ```
 
-**2.1.1. Restrict access to the `credentials` file:**
+Restrict access to the credentials file:
+
 ```bash
 chmod 600 config/credentials
 ```
 
-**2.2 `config/hubs:`**
+#### `config/hubs`
 
-```plaintext
+```text
 # Kitchen
-160.140.100.240
+192.168.1.240
 
 # Living room
-160.140.100.241
+192.168.1.241
 ```
 
 Empty lines and lines starting with `#` are ignored.
 
-**3. Run the logger:**
+### 3. Run the logger
+
 ```bash
 ./run.sh
 ```
+
 `run.sh` creates a local virtual environment and installs the required Python dependency if needed.
 
+## Output
 
-#### Output
 Sensor data is appended to `tapo_t310_data.csv` in the project directory.
 
-#### Example Raspberry Pi with cron
+## Example Raspberry Pi setup with cron
 
 A common use case is running the logger on a Raspberry Pi in the same local network as the Tapo H100 hub.
 
 Example: run the logger every 30 minutes using cron.
 
 Open the user crontab:
+
 ```bash
 crontab -e
 ```
@@ -87,13 +98,14 @@ Add this line:
 ```cron
 */30 * * * * cd /path/to/tapo-t310-logger && ./run.sh >> cron.log 2>&1
 ```
-Adjust */path/to/tapo-t310-logger* to your local project path.
+
+Adjust `/path/to/tapo-t310-logger` to your local project path.
 
 A `cron.log` file will be created in the project directory.
 
+## Optional: Cloud-free operation
 
-#### Optional: Cloud-Free Operation
-The H100 hubs do not require Internet access for this logger. After the initial setup and any desired firmware updates, Internet access can be blocked (e.g. at the router level).
+The H100 hubs do not require Internet access for this logger. After the initial setup and any desired firmware updates, Internet access can be blocked, for example at the router level.
 
 The logger communicates directly with the H100 hubs over the local network and does not require the Tapo cloud.
 
@@ -105,9 +117,9 @@ When Internet access is blocked:
 - Remote access through the Tapo smartphone app is no longer available
 - Firmware updates are no longer possible until Internet access is restored
 
-**This allows the H100 hubs and T310 sensors to operate completely without the Tapo cloud after initial configuration.**
+This allows the H100 hubs and T310 sensors to operate without the Tapo cloud after initial configuration.
 
-For long-term stability, it is recommended to keep the H100 hubs offline after setup and to pin the Python dependencies using. The logger should continue to work as long as the local H100 API remains unchanged and the same Python environment/dependencies are used.
+For long-term stability, it is recommended to keep the H100 hubs offline after setup and to keep the Python environment and dependencies stable. The logger should continue to work as long as the local H100 API remains unchanged and the same Python environment and dependencies are used.
 
 ## License
 
