@@ -1,6 +1,6 @@
 # tapo-t310-logger
 
-Small local CSV logger for TP-Link Tapo T310 sensors using [python-kasa](https://github.com/python-kasa/python-kasa).
+Simple CSV logger for Tapo T310 temperature and humidity sensors connected to H100 hubs using [python-kasa](https://github.com/python-kasa/python-kasa).
 
 The script reads configured TP-Link Tapo H100 hub IP addresses, collects values from connected T310 sensors, and appends them to a local CSV file.
 
@@ -72,7 +72,7 @@ Empty lines and lines starting with `#` are ignored.
 ## Output
 Sensor data is appended to `tapo_t310_data.csv` in the project directory.
 
-## Example Raspberry Pi / cron
+## Example Raspberry Pi with cron
 
 A common use case is running the logger on a Raspberry Pi in the same local network as the Tapo H100 hub.
 
