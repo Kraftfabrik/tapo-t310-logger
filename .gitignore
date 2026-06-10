@@ -1,0 +1,17 @@
+# Virtual environment
+.venv/
+__pycache__/
+*.pyc
+
+# Local configuration
+config/credentials
+config/hubs
+
+# Runtime data
+tapo_t310_data.csv
+cron.log
+*.log
+
+# Editor / OS noise
+.vscode/
+.idea/
