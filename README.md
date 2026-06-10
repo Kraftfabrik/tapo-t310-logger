@@ -108,6 +108,8 @@ When Internet access is blocked:
 
 **This allows the H100 hubs and T310 sensors to operate completely without the Tapo cloud after initial configuration.**
 
+For long-term stability, it is recommended to keep the H100 hubs offline after setup and to pin the Python dependencies using. The logger should continue to work as long as the local H100 API remains unchanged and the same Python environment/dependencies are used.
+
 ### License
 
 GPL-3.0-or-later
