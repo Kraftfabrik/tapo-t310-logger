@@ -6,7 +6,7 @@ The script reads configured TP-Link Tapo H100 hub IP addresses, collects values 
 
 Example output:
 
-| time | device_id | name | temperature | humidity |
+| time | device_id | alias | temperature | humidity |
 |---|---|---|---:|---:|
 | 2026-06-09T16:30:00 | 802C2EE12C... | Living room | 24.2 | 57 |
 
@@ -14,14 +14,16 @@ Local CSV logging only. No cloud dashboard. No database. No MQTT. No Home Assist
 
 ## Requirements
 
-- Python 3 with python3-pip python3-venv
-- One or more TP-Link Tapo H100 hubs
-- One or more TP-Link Tapo T310 sensors
+- Python 3 with python3-pip and python3-venv
+- One or more TP-Link Tapo H100 hubs and T310 sensors
 - Tapo account credentials
+- Local network acceess to H100
 
 ## Compatibility
 
-Currently tested with the TP-Link Tapo H100 hub only.
+Currently tested with the TP-Link Tapo H100 hub only:
+- Hardware: 1.0 (EU)
+- Firmware: 1.6.1 Build 250324 Rel.173226
 
 Other Tapo hubs may work, but I cannot verify this because I do not own one. Feedback and reports are welcome.
 
