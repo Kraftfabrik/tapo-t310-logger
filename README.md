@@ -12,14 +12,14 @@ Example output:
 
 Local CSV logging only. No cloud dashboard. No database. No MQTT. No Home Assistant.
 
-## Requirements
+#### Requirements
 
 - Python 3 with python3-pip and python3-venv
 - One or more TP-Link Tapo H100 hubs and T310 sensors
 - Tapo account credentials
 - Local network acceess to H100
 
-## Compatibility
+#### Compatibility
 
 Currently tested with the TP-Link Tapo H100 hub only:
 - Hardware: 1.0 (EU)
@@ -28,7 +28,6 @@ Currently tested with the TP-Link Tapo H100 hub only:
 Other Tapo hubs may work, but I cannot verify this because I do not own one. Feedback and reports are welcome.
 
 ## Setup
-
 **1. Clone the repository:**
 ```bash
 git clone https://github.com/kraftfabrik/tapo-t310-logger.git
@@ -69,10 +68,10 @@ Empty lines and lines starting with `#` are ignored.
 `run.sh` creates a local virtual environment and installs the required Python dependency if needed.
 
 
-## Output
+#### Output
 Sensor data is appended to `tapo_t310_data.csv` in the project directory.
 
-## Example Raspberry Pi with cron
+#### Example Raspberry Pi with cron
 
 A common use case is running the logger on a Raspberry Pi in the same local network as the Tapo H100 hub.
 
@@ -92,8 +91,8 @@ Adjust */path/to/tapo-t310-logger* to your local project path.
 
 A `cron.log` file will be created in the project directory.
 
-### Optional: Cloud-Free Operation
 
+#### Optional: Cloud-Free Operation
 The H100 hubs do not require Internet access for this logger. After the initial setup and any desired firmware updates, Internet access can be blocked (e.g. at the router level).
 
 The logger communicates directly with the H100 hubs over the local network and does not require the Tapo cloud.
@@ -110,10 +109,8 @@ When Internet access is blocked:
 
 For long-term stability, it is recommended to keep the H100 hubs offline after setup and to pin the Python dependencies using. The logger should continue to work as long as the local H100 API remains unchanged and the same Python environment/dependencies are used.
 
-### License
+## License
 
 GPL-3.0-or-later
-
-### Disclaimer
 
 This project is not affiliated with, endorsed by, or sponsored by TP-Link.
